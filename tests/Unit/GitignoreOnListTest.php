@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Devkit\Env\Branding;
 use Devkit\Env\Store\EnvProfileManager;
 use Devkit\Env\Store\ProjectConfig;
 
@@ -15,7 +16,7 @@ test('listNames ensures .gitignore excludes the env store', function (): void {
 
     $gitignore = file_get_contents($dir . '/.gitignore');
     expect($gitignore)->not->toBeFalse();
-    expect($gitignore)->toContain('# devkit-env');
+    expect($gitignore)->toContain('# ' . Branding::CLI_BINARY);
     expect($gitignore)->toContain('/env/');
 
     unlink($dir . '/.gitignore');

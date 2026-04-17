@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Devkit\Env\Cli;
 
+use Devkit\Env\ProjectLayout;
 use Devkit\Env\Store\EnvProfileManager;
 use Devkit\Env\Store\PostSwitchCommandRunner;
 use Devkit\Env\Store\ProfileName;
@@ -192,7 +193,7 @@ final readonly class UseCommand
     private function hasHelpFlag(array $argv): bool
     {
         foreach ($argv as $arg) {
-            if ($arg === '-h' || $arg === '--help') {
+            if ($arg === CliGlobalOption::HELP_SHORT || $arg === CliGlobalOption::HELP_LONG) {
                 return true;
             }
         }
@@ -204,7 +205,11 @@ final readonly class UseCommand
     {
         $names = $manager->listNames();
         if ($names === []) {
-            fwrite(STDERR, "No saved profiles. Run: devkit-env save --name <name>\n");
+            fwrite(STDERR, sprintf(
+                "No saved profiles. Run: %s %s --name <name>\n",
+                CliProgramName::BINARY,
+                CliCommandName::SAVE
+            ));
 
             return null;
         }
@@ -237,20 +242,23 @@ final readonly class UseCommand
 
     private function printHelp(): void
     {
-        echo <<<'TXT'
-Usage: devkit-env use [PROFILE] [--target PATH] [--backup-dir PATH] [--no-backup] [--skip-hooks]
+        $bin = CliProgramName::BINARY;
+        $cmd = CliCommandName::USE;
+        $config = ProjectLayout::CONFIG_FILE;
+        echo <<<TXT
+Usage: {$bin} {$cmd} [PROFILE] [--target PATH] [--backup-dir PATH] [--no-backup] [--skip-hooks]
 
-Copy a saved profile onto your working env file (default path: defaultEnv / targetEnv in .devkit-env.json, else ".env").
+Copy a saved profile onto your working env file (default path: defaultEnv / targetEnv in {$config}, else ".env").
 Backs up the previous file under the backup directory unless --no-backup is set.
 
-  --target PATH       File to overwrite (default: defaultEnv / targetEnv from .devkit-env.json).
-  --backup-dir PATH   Where to store backups (default: env/backups or .devkit-env.json).
+  --target PATH       File to overwrite (default: defaultEnv / targetEnv from {$config}).
+  --backup-dir PATH   Where to store backups (default: env/backups or {$config}).
   --no-backup         Do not backup the current target file before replacing it.
-  --skip-hooks        Do not run afterSwitch / afterSwitchProfiles commands from .devkit-env.json.
+  --skip-hooks        Do not run afterSwitch / afterSwitchProfiles commands from {$config}.
 
 Interactive mode (TTY): prompts with a numbered list if PROFILE is omitted.
 
-After a successful switch, commands from .devkit-env.json (afterSwitch, afterSwitchProfiles) run
+After a successful switch, commands from {$config} (afterSwitch, afterSwitchProfiles) run
 from the project directory (e.g. php artisan cache:clear).
 
 TXT;

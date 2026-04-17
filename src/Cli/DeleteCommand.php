@@ -131,7 +131,7 @@ final readonly class DeleteCommand
     private function hasHelpFlag(array $argv): bool
     {
         foreach ($argv as $arg) {
-            if ($arg === '-h' || $arg === '--help') {
+            if ($arg === CliGlobalOption::HELP_SHORT || $arg === CliGlobalOption::HELP_LONG) {
                 return true;
             }
         }
@@ -176,9 +176,12 @@ final readonly class DeleteCommand
 
     private function printHelp(): void
     {
-        echo <<<'TXT'
-Usage: devkit-env delete [PROFILE] [--force]
-       devkit-env rm [PROFILE] [--force]
+        $bin = CliProgramName::BINARY;
+        $del = CliCommandName::DELETE;
+        $deleteAlias = CliCommandName::DELETE_ALIAS;
+        echo <<<TXT
+Usage: {$bin} {$del} [PROFILE] [--force]
+       {$bin} {$deleteAlias} [PROFILE] [--force]
 
 Remove a saved profile from env/registry.json and delete its file under the store directory.
 Does not change your current working .env.

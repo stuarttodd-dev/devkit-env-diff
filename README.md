@@ -6,7 +6,8 @@ Composer package: **`devkit/env`**. Binaries: `vendor/bin/devkit-env` (also `ven
 
 ## What it’s for
 
-- **Diff** two or more `.env` files and see missing keys, extra keys, and value mismatches (with optional masking).
+- **Diff** two or more `.env` files and see missing keys, extra keys, and value mismatches (with optional masking); use **`--format side-by-side`** for a two-column view.
+- **Merge** two `.env` files interactively (pick left/right on conflicts, include/skip keys that exist on only one side) or with **`--prefer`** in scripts; **`--dry-run`** previews the result (with **`--out`**, does not write the file).
 - **Manage the active env file** (usually `.env`): copy a saved profile over it, with **automatic backup** of what was there before.
 - **Create saved profiles** by copying **any** file (e.g. `save --from .env.staging` — build a library from staging, prod exports, or another machine’s file).
 - **Switch** the current project to a saved profile (`use <name>`).
@@ -34,9 +35,10 @@ composer install
 | `devkit-env use` | Copy a saved profile onto your working env file (e.g. `.env`), **backing up** the previous file first. |
 | `devkit-env list` | List saved profile names. |
 | `devkit-env delete` / `rm` | Remove a saved profile (registry entry + file under `env/`). |
-| `devkit-env diff` | Compare multiple `.env` files (baseline vs targets) — missing keys, extras, value drift, optional masking. |
+| `devkit-env diff` | Compare multiple `.env` files (baseline vs targets) — missing keys, extras, value drift, optional masking. Use `--format side-by-side` (alias `wide`) for two columns. |
+| `devkit-env merge` | Merge **two** `.env` files: interactive prompts for conflicts and keys on one side only; use `-n` and `--prefer left` or `right` when stdin is not a TTY. **`--dry-run`** previews output; with **`--out`**, prints what would be written without creating the file. |
 
-Run `devkit-env --help` for a short summary. For diff-only flags: `devkit-env diff --help`.
+Run `devkit-env --help` for a short summary. For diff-only flags: `devkit-env diff --help`. For merge: `devkit-env merge --help`.
 
 **Legacy invocation:** you can still run `devkit-env-diff …` with the same entrypoint; arguments that start with `-` are treated as **diff** mode (same as before).
 

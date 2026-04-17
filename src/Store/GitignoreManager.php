@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Devkit\Env\Store;
 
+use Devkit\Env\Branding;
+
 /**
  * Appends ignore patterns to the project .gitignore when missing.
  *
@@ -12,9 +14,9 @@ namespace Devkit\Env\Store;
  */
 final class GitignoreManager
 {
-    private const string MARKER_BEGIN = '# devkit-env';
+    private const string MARKER_BEGIN = '# ' . Branding::CLI_BINARY;
 
-    private const string MARKER_END = '# /devkit-env';
+    private const string MARKER_END = '# /' . Branding::CLI_BINARY;
 
     /**
      * @param list<string> $patterns

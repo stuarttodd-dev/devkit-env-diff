@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Devkit\Env\Cli;
 
+use Devkit\Env\ProjectLayout;
 use Devkit\Env\Store\EnvProfileManager;
 use Devkit\Env\Store\ProfileName;
 use Devkit\Env\Store\ProjectConfig;
@@ -110,7 +111,7 @@ final readonly class SaveCommand
     private function hasHelpFlag(array $argv): bool
     {
         foreach ($argv as $arg) {
-            if ($arg === '-h' || $arg === '--help') {
+            if ($arg === CliGlobalOption::HELP_SHORT || $arg === CliGlobalOption::HELP_LONG) {
                 return true;
             }
         }
@@ -218,13 +219,16 @@ final readonly class SaveCommand
 
     private function printHelp(): void
     {
-        echo <<<'TXT'
-Usage: devkit-env save [--name NAME] [--from PATH] [--force]
+        $bin = CliProgramName::BINARY;
+        $cmd = CliCommandName::SAVE;
+        $config = ProjectLayout::CONFIG_FILE;
+        echo <<<TXT
+Usage: {$bin} {$cmd} [--name NAME] [--from PATH] [--force]
 
 Save the current (or specified) .env file into the local profile store (under ./env by default).
 
   --name NAME     Profile label (required in non-interactive mode).
-  --from PATH     Source file (default: defaultEnv / targetEnv from .devkit-env.json, else .env).
+  --from PATH     Source file (default: defaultEnv / targetEnv from {$config}, else .env).
   --force         Overwrite an existing profile with the same name.
 
 Interactive mode (TTY): choose an existing profile by number to overwrite, or type a new name.

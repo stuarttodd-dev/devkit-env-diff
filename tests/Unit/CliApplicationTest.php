@@ -70,6 +70,19 @@ test('cli json format runs', function (): void {
         ->and($out)->toContain('"baseline"');
 });
 
+test('cli side-by-side format runs', function (): void {
+    $path = dirname(__DIR__) . '/fixtures/env/simple.env';
+    [$code, $out] = runDevkitBinary([
+        '--format=wide',
+        '--env', 'a=' . $path,
+        '--env', 'b=' . $path,
+    ]);
+
+    expect($code)->toBe(0)
+        ->and($out)->toContain('KEY')
+        ->and($out)->toContain('(baseline)');
+});
+
 test('MainRouter in-process matches binary exit code', function (): void {
     $path = dirname(__DIR__) . '/fixtures/env/simple.env';
     $argv = ['devkit-env', '--env', 'local=' . $path, '--env', 'prod=' . $path];

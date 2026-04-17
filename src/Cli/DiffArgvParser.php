@@ -7,7 +7,9 @@ namespace Devkit\Env\Cli;
 use InvalidArgumentException;
 
 /**
- * Parses CLI arguments for devkit-env diff.
+ * Parses CLI arguments for {@see CliProgramName::BINARY} diff.
+ *
+ * @SuppressWarnings(PHPMD.StaticAccess)
  */
 final class DiffArgvParser
 {
@@ -18,7 +20,7 @@ final class DiffArgvParser
      *     help: bool,
      *     envs: array<string, string>,
      *     baseline: ?string,
-     *     format: 'text'|'json',
+     *     format: DiffOutputFormat,
      *     mask: bool,
      *     maskKeyPatterns: list<string>
      * }
@@ -33,8 +35,7 @@ final class DiffArgvParser
         /** @var array<string, string> $envs */
         $envs = [];
         $baseline = null;
-        /** @var 'text'|'json' $format */
-        $format = 'text';
+        $format = DiffOutputFormat::Text;
         $mask = true;
         /** @var list<string> $maskKeyPatterns */
         $maskKeyPatterns = [];
@@ -45,7 +46,7 @@ final class DiffArgvParser
         while ($index < $count) {
             $arg = $argv[$index];
 
-            if ($arg === '-h' || $arg === '--help') {
+            if ($arg === CliGlobalOption::HELP_SHORT || $arg === CliGlobalOption::HELP_LONG) {
                 $help = true;
                 ++$index;
 
@@ -60,7 +61,7 @@ final class DiffArgvParser
             }
 
             if (str_starts_with($arg, '--format=')) {
-                $format = $this->parseFormat(substr($arg, strlen('--format=')));
+                $format = DiffOutputFormat::fromUserString(substr($arg, strlen('--format=')));
                 ++$index;
 
                 continue;
@@ -73,7 +74,7 @@ final class DiffArgvParser
                     throw new InvalidArgumentException('--format requires a value.');
                 }
 
-                $format = $this->parseFormat($next);
+                $format = DiffOutputFormat::fromUserString($next);
                 ++$index;
 
                 continue;
@@ -179,22 +180,5 @@ final class DiffArgvParser
         }
 
         $envs[$name] = $path;
-    }
-
-    /**
-     * @return 'text'|'json'
-     */
-    private function parseFormat(string $value): string
-    {
-        $lower = strtolower($value);
-        if ($lower === 'text') {
-            return 'text';
-        }
-
-        if ($lower === 'json') {
-            return 'json';
-        }
-
-        throw new InvalidArgumentException(sprintf('Invalid --format "%s" (use text or json).', $value));
     }
 }

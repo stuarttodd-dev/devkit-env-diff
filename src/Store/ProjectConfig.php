@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Devkit\Env\Store;
 
+use Devkit\Env\ProjectLayout;
 use JsonException;
 
 /**
@@ -15,14 +16,12 @@ use JsonException;
  */
 final readonly class ProjectConfig
 {
-    private const string CONFIG_FILENAME = '.devkit-env.json';
-
     /**
      * @param list<string>       $afterSwitchCommands   Run after every successful `use`
      * @param ProfileCommands   $afterSwitchByProfile  Extra commands per profile name
      *
      * $targetEnvPath is the default active env file (JSON keys: defaultEnv or targetEnv).
-     * Override per run: devkit-env use --target …, devkit-env save --from …
+     * Override per run: use --target …, save --from … (see CLI).
      */
     public function __construct(
         public string $workingDirectory,
@@ -36,7 +35,7 @@ final readonly class ProjectConfig
 
     public static function load(string $workingDirectory): self
     {
-        $path = $workingDirectory . '/' . self::CONFIG_FILENAME;
+        $path = $workingDirectory . '/' . ProjectLayout::CONFIG_FILE;
         $defaults = new self($workingDirectory, 'env', 'env/backups', '.env', [], []);
 
         if (!is_readable($path)) {

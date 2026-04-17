@@ -19,9 +19,11 @@ final readonly class ListCommand
      */
     public function run(array $argv): int
     {
-        if ($argv !== [] && ($argv[0] === '-h' || $argv[0] === '--help')) {
-            echo <<<'TXT'
-Usage: devkit-env list
+        if ($argv !== [] && ($argv[0] === CliGlobalOption::HELP_SHORT || $argv[0] === CliGlobalOption::HELP_LONG)) {
+            $bin = CliProgramName::BINARY;
+            $cmd = CliCommandName::LIST;
+            echo <<<TXT
+Usage: {$bin} {$cmd}
 
 Print saved profile names from env/registry.json.
 

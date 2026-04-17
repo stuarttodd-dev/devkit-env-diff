@@ -6,6 +6,7 @@ namespace Devkit\Env\Cli;
 
 use Devkit\Env\Diff\MultiEnvironmentDiff;
 use Devkit\Env\Diff\Reporting\JsonReportFormatter;
+use Devkit\Env\Diff\Reporting\SideBySideReportFormatter;
 use Devkit\Env\Diff\Reporting\TextReportFormatter;
 use Devkit\Env\Diff\ValueMasker;
 use InvalidArgumentException;
@@ -38,7 +39,7 @@ final readonly class DiffCommand
             $options = $this->argvParser->parse($argv);
         } catch (InvalidArgumentException $invalidArgumentException) {
             fwrite(STDERR, $invalidArgumentException->getMessage() . "\n");
-            fwrite(STDERR, "Try: devkit-env diff --help\n");
+            fwrite(STDERR, sprintf("Try: %s %s --help\n", CliProgramName::BINARY, CliCommandName::DIFF));
 
             return self::EXIT_ERROR;
         }
@@ -87,8 +88,16 @@ final readonly class DiffCommand
         }
 
         try {
-            if ($options['format'] === 'json') {
+            $format = $options['format'];
+            if ($format === DiffOutputFormat::Json) {
                 $out = (new JsonReportFormatter())->format($baseline, $results, $masker);
+                echo $out;
+
+                return $hasDrift ? self::EXIT_DRIFT : self::EXIT_OK;
+            }
+
+            if ($format === DiffOutputFormat::SideBySide) {
+                $out = (new SideBySideReportFormatter())->format($baseline, $results, $masker);
                 echo $out;
 
                 return $hasDrift ? self::EXIT_DRIFT : self::EXIT_OK;
@@ -107,9 +116,14 @@ final readonly class DiffCommand
 
     private function printHelp(): void
     {
-        $help = <<<'TXT'
-Usage: devkit-env diff --env NAME=PATH [--env NAME=PATH ...] [--baseline NAME]
-       [--format text|json] [--no-mask] [--mask-key PATTERN ...]
+        $bin = CliProgramName::BINARY;
+        $cmd = CliCommandName::DIFF;
+        $fmtText = DiffOutputFormat::Text->value;
+        $fmtJson = DiffOutputFormat::Json->value;
+        $fmtSide = DiffOutputFormat::SideBySide->value;
+        $help = <<<TXT
+Usage: {$bin} {$cmd} --env NAME=PATH [--env NAME=PATH ...] [--baseline NAME]
+       [--format {$fmtText}|{$fmtJson}|{$fmtSide}] [--no-mask] [--mask-key PATTERN ...]
 
 Compare .env files between a baseline environment and one or more targets.
 
@@ -117,7 +131,7 @@ Compare .env files between a baseline environment and one or more targets.
   --baseline NAME   Which --env label is the source of truth. Required when more than
                     two environments are listed; with exactly two, defaults to the first
                     environment in the order options were given.
-  --format text|json  Output format (default: text).
+  --format {$fmtText}|{$fmtJson}|{$fmtSide}  Output format (default: {$fmtText}). Aliases: wide, sidebyside.
   --no-mask         Show raw values (default is to mask sensitive-looking keys).
   --mask-key PATTERN  Extra fnmatch pattern for keys whose values should be masked (repeatable).
 

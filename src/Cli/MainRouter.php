@@ -71,7 +71,7 @@ final readonly class MainRouter
             return (new ListCommand())->run(array_slice($argv, 1));
         }
 
-        if ($first === CliCommandName::DELETE || $first === CliCommandName::DELETE_ALIAS) {
+        if ($first === CliCommandName::DELETE) {
             return (new DeleteCommand())->run(array_slice($argv, 1));
         }
 
@@ -94,7 +94,6 @@ final readonly class MainRouter
         $use = CliCommandName::USE;
         $list = CliCommandName::LIST;
         $delete = CliCommandName::DELETE;
-        $deleteAlias = CliCommandName::DELETE_ALIAS;
         $config = ProjectLayout::CONFIG_FILE;
         echo <<<TXT
 {$bin} — switch between saved .env profiles and compare environments.
@@ -105,7 +104,7 @@ Commands:
   {$save}    Copy ./.env (or --from PATH) into a named profile under ./env/
   {$use}     Apply a named profile onto defaultEnv/targetEnv from {$config} (with backup by default)
   {$list}    List saved profile names
-  {$delete}  Remove a saved profile (alias: {$deleteAlias})
+  {$delete}  Remove a saved profile
 
 Configuration (optional): {$config} in the project root
   storeDir, backupDir, defaultEnv (or targetEnv), afterSwitch, afterSwitchProfiles — see README.

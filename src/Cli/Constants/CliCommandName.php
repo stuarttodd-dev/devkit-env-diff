@@ -21,7 +21,5 @@ final class CliCommandName
 
     public const string DELETE = 'delete';
 
-    public const string DELETE_ALIAS = 'rm';
-
     public const string HELP = 'help';
 }

@@ -1,9 +1,2 @@
-/vendor/
-
-# Default profile store & backups (see .devkit-env.json storeDir / backupDir)
-/env/
-
-# Local env files (development / manual testing)
-/.env
-/.env.*
-!/.env.example
+.idea
+vendor

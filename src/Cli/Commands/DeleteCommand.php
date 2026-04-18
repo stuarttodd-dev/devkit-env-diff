@@ -27,7 +27,7 @@ final readonly class DeleteCommand
     private const int EXIT_ERROR = 2;
 
     /**
-     * @param list<string> $argv arguments after "delete" or "rm"
+     * @param list<string> $argv arguments after "delete"
      */
     public function run(array $argv): int
     {
@@ -182,10 +182,8 @@ final readonly class DeleteCommand
     {
         $bin = CliProgramName::VENDOR_BIN;
         $del = CliCommandName::DELETE;
-        $deleteAlias = CliCommandName::DELETE_ALIAS;
         echo <<<TXT
 Usage: {$bin} {$del} [PROFILE] [--force]
-       {$bin} {$deleteAlias} [PROFILE] [--force]
 
 Remove a saved profile from env/registry.json and delete its file under the store directory.
 Does not change your current working .env.

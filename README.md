@@ -23,7 +23,7 @@ Managing several environments usually means several files: `.env`, `.env.staging
 ## Install
 
 ```bash
-composer require devkit/env-profiles
+composer require --dev devkit/env-profiles
 ```
 
 From a clone of this repo:

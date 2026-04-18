@@ -22,6 +22,7 @@ final class DiffArgvParser
      * @return array{
      *     help: bool,
      *     envs: array<string, string>,
+     *     profileNames: list<string>,
      *     baseline: ?string,
      *     format: DiffOutputFormat,
      *     mask: bool,
@@ -37,6 +38,8 @@ final class DiffArgvParser
         $help = false;
         /** @var array<string, string> $envs */
         $envs = [];
+        /** @var list<string> $profileNames */
+        $profileNames = [];
         $baseline = null;
         $format = DiffOutputFormat::Text;
         $mask = true;
@@ -149,12 +152,18 @@ final class DiffArgvParser
                 continue;
             }
 
-            throw new InvalidArgumentException(sprintf('Unknown argument: %s', $arg));
+            if (str_starts_with($arg, '-')) {
+                throw new InvalidArgumentException(sprintf('Unknown argument: %s', $arg));
+            }
+
+            $profileNames[] = $arg;
+            ++$index;
         }
 
         return [
             'help' => $help,
             'envs' => $envs,
+            'profileNames' => $profileNames,
             'baseline' => $baseline,
             'format' => $format,
             'mask' => $mask,

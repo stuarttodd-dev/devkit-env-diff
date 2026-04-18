@@ -62,9 +62,9 @@ php vendor/bin/devkit-env --help
 | **`save`** | Copy **`./.env`** (or **`--from`**) into a named profile in the store. |
 | **`use`** | Copy a saved profile onto **`defaultEnv` / `targetEnv`** (usually `.env`), with backup. |
 | **`list`** | Print profile names. |
-| **`delete`** / **`rm`** | Remove a profile from the store (does not change your working `.env` unless you **`use`**). |
-| **`diff`** | Compare multiple env files: missing keys, extras, value drift, optional masking. |
-| **`merge`** | Merge **two** files interactively or with **`--prefer`** for scripts. |
+| **`delete`** | Remove a profile from the store (does not change your working `.env` unless you **`use`**). |
+| **`diff`** | Compare saved profiles (`diff local staging`) or explicit env files (`--env name=path`). |
+| **`merge`** | Merge files or saved profiles; supports picker mode and `--select` checklist mode. |
 
 ---
 
@@ -183,13 +183,12 @@ Prints one name per line, or **`(no profiles saved yet)`** if the store is empty
 
 ---
 
-## `delete` / `rm` — remove a profile from the store
+## `delete` — remove a profile from the store
 
 Removes the registry entry and the file under **`storeDir`**. Does **not** change your current working **`.env`** unless you run **`use`** afterward.
 
 ```bash
 ./vendor/bin/devkit-env delete staging
-./vendor/bin/devkit-env rm staging
 ```
 
 Skip the confirmation prompt in a TTY:
@@ -198,13 +197,24 @@ Skip the confirmation prompt in a TTY:
 ./vendor/bin/devkit-env delete staging --force
 ```
 
-**Interactive (TTY):** run **`delete`** or **`rm`** without a name to pick from a list; you still confirm unless **`--force`**.
+**Interactive (TTY):** run **`delete`** without a name to pick from a list; you still confirm unless **`--force`**.
 
 ---
 
 ## `diff` — drift between env files
 
 Compare a **baseline** to one or more **targets**: missing keys, extra keys, and mismatched values. Values are **masked** by default for sensitive-looking keys; use **`--no-mask`** or **`--mask-key`** to tune that.
+
+Using saved profiles from your local store:
+
+```bash
+./vendor/bin/devkit-env diff local staging
+./vendor/bin/devkit-env diff --baseline=local local staging production
+```
+
+Do not mix positional profile names with `--env` entries in the same command.
+
+Using explicit file paths:
 
 ```bash
 ./vendor/bin/devkit-env diff \
@@ -245,6 +255,16 @@ Compare a **baseline** to one or more **targets**: missing keys, extra keys, and
 
 Takes **`--left`** and **`--right`**, produces one merged env. In a TTY you resolve conflicts interactively; in scripts use **`-n` / `--no-interaction`** with **`--prefer left`** or **`--prefer right`**.
 
+You can also merge saved profiles by name. In that mode, the first profile is the target and
+must be confirmed before overwrite:
+
+```bash
+./vendor/bin/devkit-env merge local staging
+```
+
+In an interactive terminal, you can also run `merge` with no arguments and choose target/source
+profiles from a numbered list.
+
 ```bash
 ./vendor/bin/devkit-env merge \
   --left examples/env/local.env \
@@ -272,6 +292,23 @@ Print merged content to stdout (no **`--out`**):
 ```
 
 Optional: **`--no-mask`**, repeatable **`--mask-key PATTERN`** for interactive prompts.
+
+Tickbox-style selection mode:
+
+```bash
+./vendor/bin/devkit-env merge --left .env --right .env.staging --select
+```
+
+In `--select` mode, you get an interactive checklist of right-side changes and can:
+- toggle by number
+- `a` select all
+- `n` select none
+- `v` toggle value previews
+- `d` done
+- `q` cancel
+
+By default, `--select` starts in compact mode (key and change type only). Press `v` to show masked
+value previews (`left -> right`) and press `v` again to hide values.
 
 ---
 

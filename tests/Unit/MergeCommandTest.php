@@ -82,3 +82,21 @@ test('merge dry-run with --out prints merged content and does not create file', 
     unlink($dir . '/b.env');
     rmdir($dir);
 });
+
+test('merge --select requires interactive tty', function (): void {
+    $dir = sys_get_temp_dir() . '/devkit-merge-select-' . bin2hex(random_bytes(4));
+    mkdir($dir, 0777, true);
+    file_put_contents($dir . '/a.env', "A=1\n");
+    file_put_contents($dir . '/b.env', "A=2\n");
+
+    $argv = ['devkit-env', 'merge', '--left', $dir . '/a.env', '--right', $dir . '/b.env', '--select'];
+    ob_start();
+    $code = (new MainRouter())->run($argv);
+    ob_end_clean();
+
+    expect($code)->toBe(2);
+
+    unlink($dir . '/a.env');
+    unlink($dir . '/b.env');
+    rmdir($dir);
+});

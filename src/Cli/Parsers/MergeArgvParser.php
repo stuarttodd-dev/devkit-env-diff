@@ -27,12 +27,14 @@ final class MergeArgvParser
      *     help: bool,
      *     left: ?string,
      *     right: ?string,
+     *     profileNames: list<string>,
      *     out: ?string,
      *     prefer: ?MergeSide,
      *     noInteraction: bool,
      *     mask: bool,
      *     maskKeyPatterns: list<string>,
-     *     dryRun: bool
+     *     dryRun: bool,
+     *     select: bool
      * }
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
@@ -43,6 +45,8 @@ final class MergeArgvParser
         $help = false;
         $left = null;
         $right = null;
+        /** @var list<string> $profileNames */
+        $profileNames = [];
         $out = null;
         $prefer = null;
         $noInteraction = false;
@@ -50,6 +54,7 @@ final class MergeArgvParser
         /** @var list<string> $maskKeyPatterns */
         $maskKeyPatterns = [];
         $dryRun = false;
+        $select = false;
 
         $index = 0;
         $count = count($argv);
@@ -73,6 +78,13 @@ final class MergeArgvParser
 
             if ($arg === MergeCliOption::DRY_RUN_LONG) {
                 $dryRun = true;
+                ++$index;
+
+                continue;
+            }
+
+            if ($arg === MergeCliOption::SELECT_LONG) {
+                $select = true;
                 ++$index;
 
                 continue;
@@ -191,19 +203,26 @@ final class MergeArgvParser
                 continue;
             }
 
-            throw new InvalidArgumentException(sprintf('Unknown argument: %s', $arg));
+            if (str_starts_with($arg, '-')) {
+                throw new InvalidArgumentException(sprintf('Unknown argument: %s', $arg));
+            }
+
+            $profileNames[] = $arg;
+            ++$index;
         }
 
         return [
             'help' => $help,
             'left' => $left,
             'right' => $right,
+            'profileNames' => $profileNames,
             'out' => $out,
             'prefer' => $prefer,
             'noInteraction' => $noInteraction,
             'mask' => $mask,
             'maskKeyPatterns' => $maskKeyPatterns,
             'dryRun' => $dryRun,
+            'select' => $select,
         ];
     }
 

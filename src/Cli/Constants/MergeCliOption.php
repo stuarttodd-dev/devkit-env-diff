@@ -32,4 +32,6 @@ final class MergeCliOption
     public const string MASK_KEY_EQ_PREFIX = '--mask-key=';
 
     public const string DRY_RUN_LONG = '--dry-run';
+
+    public const string SELECT_LONG = '--select';
 }

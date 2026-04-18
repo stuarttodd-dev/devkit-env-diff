@@ -20,7 +20,7 @@ final readonly class ListCommand
     public function run(array $argv): int
     {
         if ($argv !== [] && ($argv[0] === CliGlobalOption::HELP_SHORT || $argv[0] === CliGlobalOption::HELP_LONG)) {
-            $bin = CliProgramName::BINARY;
+            $bin = CliProgramName::VENDOR_BIN;
             $cmd = CliCommandName::LIST;
             echo <<<TXT
 Usage: {$bin} {$cmd}

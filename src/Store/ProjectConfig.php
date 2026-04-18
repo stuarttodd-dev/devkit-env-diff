@@ -36,7 +36,7 @@ final readonly class ProjectConfig
     public static function load(string $workingDirectory): self
     {
         $path = $workingDirectory . '/' . ProjectLayout::CONFIG_FILE;
-        $defaults = new self($workingDirectory, 'env', 'env/backups', '.env', [], []);
+        $defaults = new self($workingDirectory, 'env', 'env/backups', ProjectLayout::DEFAULT_ENV_FILE, [], []);
 
         if (!is_readable($path)) {
             return $defaults;

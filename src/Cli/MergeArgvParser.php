@@ -7,7 +7,7 @@ namespace Devkit\Env\Cli;
 use InvalidArgumentException;
 
 /**
- * Parses CLI arguments for {@see CliProgramName::BINARY} {@see CliCommandName::MERGE}.
+ * Parses CLI arguments for {@see CliProgramName::VENDOR_BIN} {@see CliCommandName::MERGE}.
  *
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  * @SuppressWarnings(PHPMD.ShortVariable)

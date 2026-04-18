@@ -207,7 +207,7 @@ final readonly class UseCommand
         if ($names === []) {
             fwrite(STDERR, sprintf(
                 "No saved profiles. Run: %s %s --name <name>\n",
-                CliProgramName::BINARY,
+                CliProgramName::VENDOR_BIN,
                 CliCommandName::SAVE
             ));
 
@@ -242,7 +242,7 @@ final readonly class UseCommand
 
     private function printHelp(): void
     {
-        $bin = CliProgramName::BINARY;
+        $bin = CliProgramName::VENDOR_BIN;
         $cmd = CliCommandName::USE;
         $config = ProjectLayout::CONFIG_FILE;
         echo <<<TXT

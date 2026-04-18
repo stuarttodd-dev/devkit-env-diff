@@ -7,7 +7,7 @@ namespace Devkit\Env\Cli;
 use InvalidArgumentException;
 
 /**
- * Parses CLI arguments for {@see CliProgramName::BINARY} diff.
+ * Parses CLI arguments for {@see CliProgramName::VENDOR_BIN} diff.
  *
  * @SuppressWarnings(PHPMD.StaticAccess)
  */

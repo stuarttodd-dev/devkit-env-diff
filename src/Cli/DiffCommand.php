@@ -39,7 +39,7 @@ final readonly class DiffCommand
             $options = $this->argvParser->parse($argv);
         } catch (InvalidArgumentException $invalidArgumentException) {
             fwrite(STDERR, $invalidArgumentException->getMessage() . "\n");
-            fwrite(STDERR, sprintf("Try: %s %s --help\n", CliProgramName::BINARY, CliCommandName::DIFF));
+            fwrite(STDERR, sprintf("Try: %s %s --help\n", CliProgramName::VENDOR_BIN, CliCommandName::DIFF));
 
             return self::EXIT_ERROR;
         }
@@ -116,7 +116,7 @@ final readonly class DiffCommand
 
     private function printHelp(): void
     {
-        $bin = CliProgramName::BINARY;
+        $bin = CliProgramName::VENDOR_BIN;
         $cmd = CliCommandName::DIFF;
         $fmtText = DiffOutputFormat::Text->value;
         $fmtJson = DiffOutputFormat::Json->value;

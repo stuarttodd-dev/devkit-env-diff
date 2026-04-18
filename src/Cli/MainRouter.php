@@ -70,7 +70,7 @@ final readonly class MainRouter
             return (new MergeCommand())->run(array_slice($argv, 1));
         }
 
-        $bin = CliProgramName::BINARY;
+        $bin = CliProgramName::VENDOR_BIN;
         fwrite(STDERR, sprintf("Unknown command: %s\nRun %s --help\n", $first, $bin));
 
         return self::EXIT_ERROR;
@@ -78,7 +78,7 @@ final readonly class MainRouter
 
     private function printGlobalHelp(): void
     {
-        $bin = CliProgramName::BINARY;
+        $bin = CliProgramName::VENDOR_BIN;
         $diff = CliCommandName::DIFF;
         $merge = CliCommandName::MERGE;
         $save = CliCommandName::SAVE;
@@ -93,8 +93,8 @@ final readonly class MainRouter
 Commands:
   {$diff}    Compare .env files (drift report). Run: {$bin} {$diff} --help
   {$merge}   Merge two .env files (interactive or --prefer). Run: {$bin} {$merge} --help
-  {$save}    Save a .env file into a named profile under ./env/ (copy from --from or current target)
-  {$use}     Apply a named profile over your working .env (with backup by default)
+  {$save}    Copy ./.env (or --from PATH) into a named profile under ./env/
+  {$use}     Apply a named profile onto defaultEnv/targetEnv from {$config} (with backup by default)
   {$list}    List saved profile names
   {$delete}  Remove a saved profile (alias: {$deleteAlias})
 
@@ -102,6 +102,7 @@ Configuration (optional): {$config} in the project root
   storeDir, backupDir, defaultEnv (or targetEnv), afterSwitch, afterSwitchProfiles — see README.
 
 Examples:
+  {$bin} {$save} staging
   {$bin} {$save} --name staging --from .env.staging
   {$bin} {$use} staging
   {$bin} {$diff} --baseline=local --env local=.env --env prod=.env.prod

@@ -27,8 +27,9 @@ final readonly class EnvProfileManager
     public function save(string $name, string $fromPath, bool $force): void
     {
         $validated = ProfileName::validate($name);
-        if (!is_readable($fromPath)) {
-            throw new InvalidArgumentException(sprintf('Cannot read source file: %s', $fromPath));
+        $why = SourcePathDiagnostics::whyNotUsableSourceFile($fromPath);
+        if ($why !== null) {
+            throw new InvalidArgumentException($why);
         }
 
         $registry = ProfileRegistry::load($this->config->registryAbsolutePath());

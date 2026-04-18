@@ -45,7 +45,7 @@ final readonly class MergeCommand
             fwrite(STDERR, $invalidArgumentException->getMessage() . "\n");
             fwrite(STDERR, sprintf(
                 "Try: %s %s --help\n",
-                CliProgramName::BINARY,
+                CliProgramName::VENDOR_BIN,
                 CliCommandName::MERGE
             ));
 
@@ -291,7 +291,7 @@ final readonly class MergeCommand
 
     private function printHelp(): void
     {
-        $bin = CliProgramName::BINARY;
+        $bin = CliProgramName::VENDOR_BIN;
         $cmd = CliCommandName::MERGE;
         $left = MergeSide::Left->value;
         $right = MergeSide::Right->value;

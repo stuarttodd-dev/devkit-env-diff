@@ -176,7 +176,7 @@ final readonly class DeleteCommand
 
     private function printHelp(): void
     {
-        $bin = CliProgramName::BINARY;
+        $bin = CliProgramName::VENDOR_BIN;
         $del = CliCommandName::DELETE;
         $deleteAlias = CliCommandName::DELETE_ALIAS;
         echo <<<TXT

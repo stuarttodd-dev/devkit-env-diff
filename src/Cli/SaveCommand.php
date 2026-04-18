@@ -6,6 +6,7 @@ namespace Devkit\Env\Cli;
 
 use Devkit\Env\ProjectLayout;
 use Devkit\Env\Store\EnvProfileManager;
+use Devkit\Env\Store\SourcePathDiagnostics;
 use Devkit\Env\Store\ProfileName;
 use Devkit\Env\Store\ProjectConfig;
 use InvalidArgumentException;
@@ -59,7 +60,14 @@ final readonly class SaveCommand
         $forceInteractive = false;
         if ($name === null) {
             if (!ConsoleHelper::isInteractive()) {
-                fwrite(STDERR, "Profile name is required when not in an interactive terminal (use --name).\n");
+                fwrite(STDERR, sprintf(
+                    "Profile name is required when not in an interactive terminal.\n"
+                    . "Example: %s %s staging   or   %s %s --name staging\n",
+                    CliProgramName::VENDOR_BIN,
+                    CliCommandName::SAVE,
+                    CliProgramName::VENDOR_BIN,
+                    CliCommandName::SAVE
+                ));
 
                 return self::EXIT_ERROR;
             }
@@ -77,9 +85,11 @@ final readonly class SaveCommand
             $force = true;
         }
 
-        $fromPath = $from ?? $config->targetEnvAbsolute();
-        if (!is_readable($fromPath)) {
-            fwrite(STDERR, sprintf("Cannot read source file: %s\n", $fromPath));
+        // No --from: always read the project root .env (not alternate defaultEnv / targetEnv paths).
+        $fromPath = $from ?? ($cwd . '/' . ProjectLayout::DEFAULT_ENV_FILE);
+        $sourceProblem = SourcePathDiagnostics::whyNotUsableSourceFile($fromPath);
+        if ($sourceProblem !== null) {
+            fwrite(STDERR, $sourceProblem . "\n");
 
             return self::EXIT_ERROR;
         }
@@ -175,6 +185,19 @@ final readonly class SaveCommand
                 continue;
             }
 
+            if (!str_starts_with($arg, '-')) {
+                if ($name !== null) {
+                    throw new InvalidArgumentException(
+                        'Profile name can only be given once (use one of --name or a single positional name).'
+                    );
+                }
+
+                $name = $arg;
+                ++$index;
+
+                continue;
+            }
+
             throw new InvalidArgumentException(sprintf('Unknown argument: %s', $arg));
         }
     }
@@ -219,16 +242,18 @@ final readonly class SaveCommand
 
     private function printHelp(): void
     {
-        $bin = CliProgramName::BINARY;
+        $bin = CliProgramName::VENDOR_BIN;
         $cmd = CliCommandName::SAVE;
-        $config = ProjectLayout::CONFIG_FILE;
+        $envDefault = ProjectLayout::DEFAULT_ENV_FILE;
         echo <<<TXT
-Usage: {$bin} {$cmd} [--name NAME] [--from PATH] [--force]
+Usage: {$bin} {$cmd} [NAME] [--name NAME] [--from PATH] [--force]
 
-Save the current (or specified) .env file into the local profile store (under ./env by default).
+Copy {$envDefault} (or --from) into the local profile store (under ./env by default).
+Omitting --from always reads ./{$envDefault} — not defaultEnv/targetEnv in .devkit-env.json (those affect "use" only).
 
-  --name NAME     Profile label (required in non-interactive mode).
-  --from PATH     Source file (default: defaultEnv / targetEnv from {$config}, else .env).
+  NAME            Profile label (positional alternative to --name; required without a TTY if omitted).
+  --name NAME     Profile label (required in non-interactive mode if NAME is not given).
+  --from PATH     Source file (default: ./{$envDefault} in the project root when omitted).
   --force         Overwrite an existing profile with the same name.
 
 Interactive mode (TTY): choose an existing profile by number to overwrite, or type a new name.

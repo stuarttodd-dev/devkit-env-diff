@@ -1,10 +1,9 @@
-# devkit-profiles
-
 ![Devkit Profiles](./devkit-logo.png)
+# devkit-profiles
 
 **Named `.env` profiles**, safe switching with backups, and **drift reports** across files — all from one Composer binary: **`./vendor/bin/devkit-env`**.
 
-Package: **`devkit/env`**. Composer also links **`./vendor/bin/devkit-env-diff`** (same program).
+Package: **`devkit/env-profiles`**. Composer also links **`./vendor/bin/devkit-env-diff`** (same program).
 
 ---
 
@@ -24,7 +23,7 @@ Managing several environments usually means several files: `.env`, `.env.staging
 ## Install
 
 ```bash
-composer require devkit/env
+composer require devkit/env-profiles
 ```
 
 From a clone of this repo:

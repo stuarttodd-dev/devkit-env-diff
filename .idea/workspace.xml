@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64a83ba6-e8c2-4c08-bc6d-46c4576d5279" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/CliProgramName.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/CliProgramName.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/DeleteCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/DeleteCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/DiffArgvParser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/DiffArgvParser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/DiffCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/DiffCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/ListCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/ListCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/MainRouter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/MainRouter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/MergeArgvParser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/MergeArgvParser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/MergeCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/MergeCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/SaveCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/SaveCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cli/UseCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/UseCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProjectLayout.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProjectLayout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Store/EnvProfileManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/EnvProfileManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Store/ProjectConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Store/ProjectConfig.php" afterDir="false" />
-    </list>
+    <list default="true" id="64a83ba6-e8c2-4c08-bc6d-46c4576d5279" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,6 +99,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>

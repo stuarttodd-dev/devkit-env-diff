@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Store\EnvProfileManager;
-use Devkit\Env\Store\ProjectConfig;
+use Devkit\Env\Store\Config\ProjectConfig;
+use Devkit\Env\Store\Service\EnvProfileManager;
 
 test('EnvProfileManager deletes profile and file', function (): void {
     $dir = sys_get_temp_dir() . '/devkit-del-' . bin2hex(random_bytes(4));

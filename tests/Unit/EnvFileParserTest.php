@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Diff\EnvFileParser;
+use Devkit\Env\Diff\Parser\EnvFileParser;
 
 test('parses fixture file', function (): void {
     $path = dirname(__DIR__) . '/fixtures/env/simple.env';

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Devkit\Env\Diff\Reporting;
 
-use Devkit\Env\Diff\ComparisonResult;
-use Devkit\Env\Diff\ValueMasker;
+use Devkit\Env\Diff\Model\ComparisonResult;
+use Devkit\Env\Diff\Service\ValueMasker;
 use JsonException;
 
 final class JsonReportFormatter

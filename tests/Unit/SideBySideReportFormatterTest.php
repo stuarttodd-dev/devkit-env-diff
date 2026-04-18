@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Diff\ComparisonResult;
+use Devkit\Env\Diff\Model\ComparisonResult;
 use Devkit\Env\Diff\Reporting\SideBySideReportFormatter;
-use Devkit\Env\Diff\ValueMasker;
+use Devkit\Env\Diff\Service\ValueMasker;
 
 test('SideBySideReportFormatter prints two columns', function (): void {
     $result = new ComparisonResult(

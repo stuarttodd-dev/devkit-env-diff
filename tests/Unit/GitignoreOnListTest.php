@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Devkit\Env\Branding;
-use Devkit\Env\Store\EnvProfileManager;
-use Devkit\Env\Store\ProjectConfig;
+use Devkit\Env\Store\Config\ProjectConfig;
+use Devkit\Env\Store\Service\EnvProfileManager;
 
 test('listNames ensures .gitignore excludes the env store', function (): void {
     $dir = sys_get_temp_dir() . '/devkit-gitignore-' . bin2hex(random_bytes(4));

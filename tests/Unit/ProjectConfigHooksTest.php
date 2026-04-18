@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Store\ProjectConfig;
+use Devkit\Env\Store\Config\ProjectConfig;
 
 test('loads afterSwitch and afterSwitchProfiles', function (): void {
     $dir = sys_get_temp_dir() . '/devkit-env-test-' . bin2hex(random_bytes(4));
@@ -30,7 +30,7 @@ test('PostSwitchCommandRunner runs a trivial command', function (): void {
     $dir = sys_get_temp_dir() . '/devkit-env-ps-' . bin2hex(random_bytes(4));
     mkdir($dir, 0777, true);
 
-    $runner = new \Devkit\Env\Store\PostSwitchCommandRunner();
+    $runner = new \Devkit\Env\Store\Runner\PostSwitchCommandRunner();
     $php = escapeshellarg(PHP_BINARY);
     $code = $runner->run($dir, [$php . ' -r ' . escapeshellarg('fwrite(STDOUT, "ok");')]);
 

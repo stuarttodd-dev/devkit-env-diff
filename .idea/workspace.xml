@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="92504a00-0a8e-4475-b09c-792921d0bca2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/devkit-env-diff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/CliCommandName.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/CliGlobalOption.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/CliProgramName.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/DeleteCommand.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/DiffArgvParser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/DiffCommand.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/DiffOutputFormat.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/ListCommand.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/MainRouter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cli/MainRouter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/MergeArgvParser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/MergeCommand.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/MergeInteractiveChoice.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/MergeSide.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/SaveCommand.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cli/UseCommand.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/ComparisonResult.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/EnvFileParser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/EnvLineEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/EnvironmentComparer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/MultiEnvironmentDiff.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/Reporting/JsonReportFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Diff/Reporting/JsonReportFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/Reporting/SideBySideReportFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Diff/Reporting/SideBySideReportFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/Reporting/TextReportFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Diff/Reporting/TextReportFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Diff/ValueMasker.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProjectLayout.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProjectLayout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/EnvProfileManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/GitignoreManager.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/PostSwitchCommandRunner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/ProfileName.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/ProfileRegistry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/ProjectConfig.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Store/SourcePathDiagnostics.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/DeleteProfileTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/DeleteProfileTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/EnvFileParserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/EnvFileParserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/EnvLineEncoderTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/EnvLineEncoderTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/EnvironmentComparerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/EnvironmentComparerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/GitignoreOnListTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/GitignoreOnListTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/MultiEnvironmentDiffTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/MultiEnvironmentDiffTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ProjectConfigDefaultEnvTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ProjectConfigDefaultEnvTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ProjectConfigHooksTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ProjectConfigHooksTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/SideBySideReportFormatterTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/SideBySideReportFormatterTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/SourcePathDiagnosticsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/SourcePathDiagnosticsTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ValueMaskerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ValueMaskerTest.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin-arch" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin-mutate" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/pestphp/pest-plugin" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/rector/rector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/fidry/cpu-core-counter" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/jean85/pretty-package-versions" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/ta-tikoma/phpunit-architecture-test" />
+      <path value="$PROJECT_DIR$/vendor/staabm/side-effects-detector" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/termwind" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/pdepend/pdepend" />
+      <path value="$PROJECT_DIR$/vendor/brianium/paratest" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpmd/phpmd" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="3CWZGTPBblSsOsEOmXsAOS083zn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="92504a00-0a8e-4475-b09c-792921d0bca2" name="Changes" comment="" />
+      <created>1776503193988</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776503193988</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

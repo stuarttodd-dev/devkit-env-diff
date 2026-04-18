@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Diff\EnvironmentComparer;
+use Devkit\Env\Diff\Service\EnvironmentComparer;
 
 test('detects missing extra and mismatched values', function (): void {
     $baseline = ['A' => '1', 'B' => '2', 'C' => '3'];

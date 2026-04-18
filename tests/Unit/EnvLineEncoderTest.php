@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Diff\EnvLineEncoder;
+use Devkit\Env\Diff\Encoder\EnvLineEncoder;
 
 test('EnvLineEncoder writes simple unquoted values', function (): void {
     expect(EnvLineEncoder::line('FOO', 'bar'))->toBe('FOO=bar');

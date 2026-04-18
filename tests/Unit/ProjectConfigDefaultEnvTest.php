@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Store\ProjectConfig;
+use Devkit\Env\Store\Config\ProjectConfig;
 
 test('loads defaultEnv from json', function (): void {
     $dir = sys_get_temp_dir() . '/devkit-cfg-' . bin2hex(random_bytes(4));

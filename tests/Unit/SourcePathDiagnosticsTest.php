@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Devkit\Env\Store\SourcePathDiagnostics;
+use Devkit\Env\Store\Validation\SourcePathDiagnostics;
 
 test('SourcePathDiagnostics accepts a readable regular file', function (): void {
     $path = dirname(__DIR__) . '/fixtures/env/simple.env';

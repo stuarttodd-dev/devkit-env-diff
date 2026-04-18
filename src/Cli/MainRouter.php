@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace Devkit\Env\Cli;
 
+use Devkit\Env\Cli\Command\DeleteCommand;
+use Devkit\Env\Cli\Command\DiffCommand;
+use Devkit\Env\Cli\Command\ListCommand;
+use Devkit\Env\Cli\Command\MergeCommand;
+use Devkit\Env\Cli\Command\SaveCommand;
+use Devkit\Env\Cli\Command\UseCommand;
 use Devkit\Env\ProjectLayout;
 
 /**

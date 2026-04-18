@@ -22,6 +22,7 @@ use JsonException;
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  * @SuppressWarnings(PHPMD.NPathComplexity)
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 final readonly class DiffCommand
 {
@@ -38,6 +39,8 @@ final readonly class DiffCommand
 
     /**
      * @param list<string> $argv arguments only (no script name)
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function run(array $argv): int
     {
@@ -75,7 +78,10 @@ final readonly class DiffCommand
         }
 
         if (count($envs) < 2) {
-            fwrite(STDERR, "At least two environments are required (e.g. diff local staging, or use --env name=path).\n");
+            fwrite(
+                STDERR,
+                "At least two environments are required (e.g. diff local staging, or use --env name=path).\n"
+            );
 
             return self::EXIT_ERROR;
         }
@@ -171,6 +177,8 @@ TXT;
      * @param list<string> $profileNames
      *
      * @return array<string, string> profileName => absolutePath
+     *
+     * @SuppressWarnings(PHPMD.StaticAccess)
      */
     private function resolveStoredProfilePaths(array $profileNames): array
     {

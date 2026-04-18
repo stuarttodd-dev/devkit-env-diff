@@ -31,6 +31,7 @@ use RuntimeException;
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.ShortVariable)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @SuppressWarnings(PHPMD.ElseExpression)
  */
 final readonly class MergeCommand
 {
@@ -87,7 +88,11 @@ final readonly class MergeCommand
         }
 
         if ($profileNames !== [] && $options['out'] !== null) {
-            fwrite(STDERR, "Positional profile merge writes into the first profile directly; --out is not supported in this mode.\n");
+            fwrite(
+                STDERR,
+                "Positional profile merge writes into the first profile directly; "
+                . "--out is not supported in this mode.\n"
+            );
 
             return self::EXIT_ABORT;
         }
@@ -445,6 +450,7 @@ final readonly class MergeCommand
         foreach ($changes as $change) {
             $selectedKeys[$change['key']] = true;
         }
+
         $showValues = false;
 
         while (true) {

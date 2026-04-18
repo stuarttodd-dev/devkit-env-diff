@@ -13,6 +13,12 @@
             "name": "Stuart Todd"
         }
     ],
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://buymeacoffee.com/stuarttodd"
+        }
+    ],
     "minimum-stability": "stable",
     "require": {
         "php": "^8.3",

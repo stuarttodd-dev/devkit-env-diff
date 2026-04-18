@@ -100,17 +100,44 @@ Optional file **`.devkit-env.json`** in the project root controls store paths, w
 | **`afterSwitch`** | Shell commands run after **every** successful **`use`** (from project root). |
 | **`afterSwitchProfiles`** | Extra commands for specific profile **names** (runs after **`afterSwitch`**). |
 
+Example optional hook config:
+
+```json
+{
+  "afterSwitch": [
+    "php artisan config:clear",
+    "php artisan cache:clear"
+  ],
+  "afterSwitchProfiles": {
+    "staging": [
+      "php artisan route:clear"
+    ],
+    "production": [
+      "php artisan optimize",
+      "php artisan config:cache"
+    ]
+  }
+}
+```
+
+Run hooks by switching profiles:
+
+```bash
+./vendor/bin/devkit-env use staging
+./vendor/bin/devkit-env use production
+```
+
+Skip hooks for a one-off run:
+
+```bash
+./vendor/bin/devkit-env use staging --skip-hooks
+```
+
 **One-off overrides** (see command sections below):
 
 ```bash
 ./vendor/bin/devkit-env use staging --target other/path/.env
 ./vendor/bin/devkit-env save --name snapshot --from other/path/.env
-```
-
-Skip hooks for a single run:
-
-```bash
-./vendor/bin/devkit-env use staging --skip-hooks
 ```
 
 ---
@@ -335,6 +362,14 @@ Namespaces:
 composer run tests
 composer run standards:check
 ```
+
+---
+
+## Support
+
+If this project saves you time and you want to support future updates:
+
+- [Buy Me a Coffee](https://buymeacoffee.com/stuarttodd)
 
 ---
 
